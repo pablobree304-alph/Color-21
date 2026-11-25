@@ -1,231 +1,662 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ColorVivo | Pinturería</title>
-  <meta name="description" content="Pinturas, esmaltes, barnices y accesorios para dar vida a tus espacios.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CromaStudio | Pinturería & Color</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --accent: #f43f5e;
+            --bg-light: #f8fafc;
+            --surface: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --radius: 14px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 35px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: linear-gradient(90deg, #2563eb, #f43f5e, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .btn-admin {
+            background-color: var(--text-main);
+            color: #fff !important;
+            padding: 0.5rem 1.1rem;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.2s !important;
+        }
+
+        .btn-admin:hover {
+            background-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(120deg, #0f172a 0%, #1e293b 50%, #312e81 100%);
+            color: #fff;
+            padding: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #3b82f6, #ec4899, #eab308, #10b981);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        /* Catálogo y Filtros CSS Puros */
+        main {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+        }
+
+        .filter-system input[type="radio"] {
+            display: none;
+        }
+
+        .filter-labels {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-labels label {
+            padding: 0.6rem 1.4rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.25s ease;
+        }
+
+        .filter-labels label:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Estados activos de filtros sin JS */
+        #todo:checked ~ .filter-labels label[for="todo"],
+        #interior:checked ~ .filter-labels label[for="interior"],
+        #exterior:checked ~ .filter-labels label[for="exterior"],
+        #esmalte:checked ~ .filter-labels label[for="esmalte"] {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+
+        #interior:checked ~ .product-grid .product-card:not(.interior),
+        #exterior:checked ~ .product-grid .product-card:not(.exterior),
+        #esmalte:checked ~ .product-grid .product-card:not(.esmalte) {
+            display: none;
+        }
+
+        /* Grilla de Productos */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--surface);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .color-swatch {
+            height: 140px;
+            position: relative;
+            padding: 1rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-end;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.92);
+            color: var(--text-main);
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .specs {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .price {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .btn-edit {
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: #eff6ff;
+            padding: 0.45rem 0.9rem;
+            border-radius: 8px;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .btn-edit:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Panel de Administración */
+        .admin-section {
+            background-color: #f1f5f9;
+            padding: 4.5rem 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .admin-card {
+            background: var(--surface);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+
+        .admin-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .admin-header h2 {
+            font-size: 1.6rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .admin-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .admin-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #fff;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .color-picker-group input[type="color"] {
+            padding: 0.2rem;
+            height: 44px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-save {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 0.85rem 1.8rem;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .btn-save:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-clear {
+            background: #e2e8f0;
+            color: var(--text-main);
+            border: none;
+            padding: 0.85rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-clear:hover {
+            background: #cbd5e1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-main);
+            color: #94a3b8;
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividad */
+        @media (max-width: 640px) {
+            .nav-content {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .admin-card {
+                padding: 1.5rem;
+            }
+
+            .btn-save, .btn-clear {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ENCABEZADO -->
-  <header class="header" id="inicio">
-    <div class="container header__inner">
-      <a href="#inicio" class="logo" aria-label="ColorVivo - inicio">
-        <span class="logo__drop" aria-hidden="true"></span>
-        <span>Color<strong>Vivo</strong></span>
-      </a>
-      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="nav" id="nav">
-        <a href="#catalogo">Productos</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto">Contacto</a>
-        <button class="btn btn--ghost btn--sm" id="btnAdmin">🔒 Administrar</button>
-      </nav>
-    </div>
-  </header>
+    <header class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">CROMA<span>STUDIO</span></a>
+            <nav>
+                <a href="#catalogo">Catálogo</a>
+                <a href="#administracion" class="btn-admin">Administrar Productos</a>
+            </nav>
+        </div>
+    </header>
 
-  <!-- BARRA DE ADMINISTRADOR -->
-  <div class="adminbar" id="adminbar" hidden>
-    <div class="container adminbar__inner">
-      <strong>Modo administrador</strong>
-      <div class="adminbar__actions">
-        <button class="btn btn--primary btn--sm" id="btnNuevo">＋ Nuevo producto</button>
-        <button class="btn btn--light btn--sm" id="btnExportar">⬇ Exportar</button>
-        <label class="btn btn--light btn--sm" for="inputImportar">⬆ Importar</label>
-        <input type="file" id="inputImportar" accept="application/json" hidden>
-        <button class="btn btn--light btn--sm" id="btnReset">↺ Restablecer</button>
-        <button class="btn btn--danger btn--sm" id="btnSalir">Salir</button>
-      </div>
-    </div>
-  </div>
-
-  <main>
-    <!-- HERO -->
     <section class="hero">
-      <div class="hero__blob hero__blob--1"></div>
-      <div class="hero__blob hero__blob--2"></div>
-      <div class="hero__blob hero__blob--3"></div>
-      <div class="container hero__inner">
-        <span class="pill">🎨 Más de 20 años dando color</span>
-        <h1>Pintá tus ideas con <span class="grad">colores que enamoran</span></h1>
-        <p>Pinturas, esmaltes, barnices y accesorios de primera calidad. Asesoramiento profesional y entrega rápida.</p>
-        <div class="hero__cta">
-          <a href="#catalogo" class="btn btn--primary btn--lg">Ver productos</a>
-          <a href="#contacto" class="btn btn--outline btn--lg">Pedir asesoramiento</a>
+        <div class="container hero-content">
+            <h1>Transforma tus espacios con color puro</h1>
+            <p>Pinturas arquitectónicas, industriales y decorativas de alta resistencia.</p>
+            <a href="#catalogo" class="btn-primary">Explorar Catálogo</a>
         </div>
-        <ul class="hero__stats">
-          <li><strong>+500</strong><span>Colores</span></li>
-          <li><strong>24 h</strong><span>Entrega local</span></li>
-          <li><strong>100%</strong><span>Garantía</span></li>
-        </ul>
-      </div>
     </section>
 
-    <!-- CATÁLOGO -->
-    <section class="section" id="catalogo">
-      <div class="container">
-        <div class="section__head">
-          <h2>Nuestros productos</h2>
-          <p>Explorá por categoría, buscá por nombre o filtrá por precio.</p>
+    <main class="container" id="catalogo">
+        <div class="section-header">
+            <h2>Nuestros Productos</h2>
+            <p>Selecciona un acabado para ver detalles o usa el panel inferior para editar la lista.</p>
         </div>
 
-        <div class="toolbar">
-          <div class="search">
-            <span aria-hidden="true">🔍</span>
-            <input type="search" id="buscar" placeholder="Buscar producto…" aria-label="Buscar producto">
-          </div>
-          <select id="orden" aria-label="Ordenar productos">
-            <option value="destacados">Destacados primero</option>
-            <option value="nombre">Nombre (A-Z)</option>
-            <option value="menor">Precio: menor a mayor</option>
-            <option value="mayor">Precio: mayor a menor</option>
-          </select>
-        </div>
+        <!-- Filtros visuales mediante CSS puro (Radio buttons ocultos) -->
+        <div class="filter-system">
+            <input type="radio" name="filtro" id="todo" checked>
+            <input type="radio" name="filtro" id="interior">
+            <input type="radio" name="filtro" id="exterior">
+            <input type="radio" name="filtro" id="esmalte">
 
-        <div class="chips" id="chips" role="tablist" aria-label="Categorías"></div>
-
-        <p class="count" id="contador" aria-live="polite"></p>
-        <div class="grid" id="grid"></div>
-
-        <div class="empty" id="vacio" hidden>
-          <div class="empty__icon">🪣</div>
-          <h3>No encontramos productos</h3>
-          <p>Probá con otra búsqueda o categoría.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- NOSOTROS -->
-    <section class="section section--alt" id="nosotros">
-      <div class="container features">
-        <article class="feature">
-          <div class="feature__icon">🏷️</div>
-          <h3>Mejores marcas</h3>
-          <p>Trabajamos con fabricantes líderes para garantizar durabilidad y terminación.</p>
-        </article>
-        <article class="feature">
-          <div class="feature__icon">🎯</div>
-          <h3>Colorimetría exacta</h3>
-          <p>Preparamos el tono que imaginás con máquina de color computarizada.</p>
-        </article>
-        <article class="feature">
-          <div class="feature__icon">🚚</div>
-          <h3>Envíos rápidos</h3>
-          <p>Llevamos tu pedido a obra o a domicilio sin demoras.</p>
-        </article>
-        <article class="feature">
-          <div class="feature__icon">🧑‍🎨</div>
-          <h3>Asesoramiento</h3>
-          <p>Te ayudamos a elegir el producto ideal y calcular rendimiento.</p>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACTO -->
-    <section class="section" id="contacto">
-      <div class="container contact">
-        <div>
-          <h2>¿Hablamos?</h2>
-          <p>Escribinos y te respondemos al instante. Pasá también por el local y probá los colores en persona.</p>
-          <ul class="contact__list">
-            <li>📍 Av. Principal 1234, Tu Ciudad</li>
-            <li>📞 +54 11 0000-0000</li>
-            <li>🕘 Lun a Vie 8:00–18:00 · Sáb 8:00–13:00</li>
-          </ul>
-        </div>
-        <a class="btn btn--whatsapp btn--lg" id="btnWhats" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
-      </div>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <div class="container">© <span id="year"></span> ColorVivo Pinturería. Todos los derechos reservados.</div>
-  </footer>
-
-  <!-- MODAL: PIN -->
-  <dialog id="dlgPin" class="modal modal--sm">
-    <form method="dialog" id="formPin" class="modal__body">
-      <h3>Acceso de administrador</h3>
-      <p class="muted">Ingresá tu PIN para editar los productos.</p>
-      <input type="password" id="pin" inputmode="numeric" placeholder="PIN" autocomplete="off" required>
-      <p class="error" id="pinError" hidden>PIN incorrecto</p>
-      <div class="modal__actions">
-        <button type="button" class="btn btn--light" data-close>Cancelar</button>
-        <button type="submit" class="btn btn--primary">Entrar</button>
-      </div>
-    </form>
-  </dialog>
-
-  <!-- MODAL: PRODUCTO -->
-  <dialog id="dlgProducto" class="modal">
-    <form id="formProducto" class="modal__body">
-      <h3 id="tituloForm">Nuevo producto</h3>
-      <input type="hidden" id="pId">
-
-      <div class="form-grid">
-        <label class="field field--full">
-          <span>Nombre *</span>
-          <input type="text" id="pNombre" maxlength="80" required>
-        </label>
-
-        <label class="field">
-          <span>Categoría *</span>
-          <input type="text" id="pCategoria" list="listaCategorias" maxlength="30" required>
-          <datalist id="listaCategorias"></datalist>
-        </label>
-
-        <label class="field">
-          <span>Precio (ARS) *</span>
-          <input type="number" id="pPrecio" min="0" step="1" required>
-        </label>
-
-        <label class="field field--full">
-          <span>Descripción</span>
-          <textarea id="pDescripcion" rows="3" maxlength="300"></textarea>
-        </label>
-
-        <label class="field">
-          <span>Presentación</span>
-          <input type="text" id="pPresentacion" maxlength="30" placeholder="Ej: 20 L">
-        </label>
-
-        <label class="field">
-          <span>Color de referencia</span>
-          <input type="color" id="pColor" value="#ff3d81">
-        </label>
-
-        <div class="field field--full">
-          <span>Imagen</span>
-          <div class="imgpick">
-            <img id="pPreview" alt="Vista previa" hidden>
-            <div class="imgpick__ctrl">
-              <label class="btn btn--light btn--sm" for="pImagen">Subir imagen</label>
-              <input type="file" id="pImagen" accept="image/*" hidden>
-              <button type="button" class="btn btn--light btn--sm" id="btnQuitarImg">Quitar</button>
+            <div class="filter-labels">
+                <label for="todo">Todos</label>
+                <label for="interior">Interiores</label>
+                <label for="exterior">Exteriores</label>
+                <label for="esmalte">Esmaltes</label>
             </div>
-          </div>
+
+            <!-- Grilla de Productos -->
+            <div class="product-grid">
+
+                <!-- Producto 1 -->
+                <article class="product-card interior">
+                    <div class="color-swatch" style="background: linear-gradient(135deg, #2b5876, #4e4376);">
+                        <span class="badge">Interior</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Látex Mate Lavable</h3>
+                        <p class="specs">Acabado aterciopelado • 4L / 20L</p>
+                        <p class="desc">Alta cubrición y resistencia al roce diario en paredes interiores.</p>
+                        <div class="price-row">
+                            <span class="price">$24.500</span>
+                            <a href="#administracion" class="btn-edit">Modificar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 2 -->
+                <article class="product-card exterior">
+                    <div class="color-swatch" style="background: linear-gradient(135deg, #ff512f, #dd2476);">
+                        <span class="badge">Exterior</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Frentes Impermeabilizante</h3>
+                        <p class="specs">Elastomérico • 10L / 20L</p>
+                        <p class="desc">Protección total contra lluvia, rayos UV y formación de hongos.</p>
+                        <div class="price-row">
+                            <span class="price">$48.900</span>
+                            <a href="#administracion" class="btn-edit">Modificar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 3 -->
+                <article class="product-card esmalte">
+                    <div class="color-swatch" style="background: linear-gradient(135deg, #11998e, #38ef7d);">
+                        <span class="badge">Esmalte</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Sintético Brillante 3 en 1</h3>
+                        <p class="specs">Antióxido incluido • 1L / 4L</p>
+                        <p class="desc">Ideal para maderas y metales con secado rápido y brillo espejo.</p>
+                        <div class="price-row">
+                            <span class="price">$15.200</span>
+                            <a href="#administracion" class="btn-edit">Modificar</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Producto 4 -->
+                <article class="product-card interior">
+                    <div class="color-swatch" style="background: linear-gradient(135deg, #f7971e, #ffd200);">
+                        <span class="badge">Interior</span>
+                    </div>
+                    <div class="product-info">
+                        <h3>Satinado Premium</h3>
+                        <p class="specs">Suave brillo • 4L / 10L</p>
+                        <p class="desc">Fácil limpieza y realce luminoso para livings y habitaciones.</p>
+                        <div class="price-row">
+                            <span class="price">$31.000</span>
+                            <a href="#administracion" class="btn-edit">Modificar</a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
         </div>
+    </main>
 
-        <label class="check"><input type="checkbox" id="pDestacado"> ⭐ Producto destacado</label>
-        <label class="check"><input type="checkbox" id="pStock" checked> ✅ Disponible en stock</label>
-      </div>
+    <!-- Panel de Gestión Visual (Interfaz HTML/CSS para envío a servidor/backend) -->
+    <section class="admin-section" id="administracion">
+        <div class="container">
+            <div class="admin-card">
+                <div class="admin-header">
+                    <h2>Panel de Gestión de Productos</h2>
+                    <p>Utiliza este formulario para agregar nuevos productos o actualizar los existentes.</p>
+                </div>
 
-      <div class="modal__actions">
-        <button type="button" class="btn btn--light" data-close>Cancelar</button>
-        <button type="submit" class="btn btn--primary">Guardar</button>
-      </div>
-    </form>
-  </dialog>
+                <form action="#" method="POST" class="admin-form">
+                    <div class="form-group">
+                        <label for="accion">Acción a realizar</label>
+                        <select id="accion" name="accion">
+                            <option value="crear">Publicar nuevo producto</option>
+                            <option value="editar">Modificar producto existente</option>
+                            <option value="eliminar">Eliminar producto</option>
+                        </select>
+                    </div>
 
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nombre">Nombre del Producto</label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Ej. Látex Acrílico Exterior" required>
+                        </div>
 
-  <script src="app.js"></script>
+                        <div class="form-group">
+                            <label for="categoria">Categoría</label>
+                            <select id="categoria" name="categoria">
+                                <option value="interior">Interiores</option>
+                                <option value="exterior">Exteriores</option>
+                                <option value="esmalte">Esmaltes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="precio">Precio ($)</label>
+                            <input type="number" id="precio" name="precio" placeholder="Ej. 25000" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="presentacion">Presentación / Acabado</label>
+                            <input type="text" id="presentacion" name="presentacion" placeholder="Ej. Mate • 4L / 20L">
+                        </div>
+
+                        <div class="form-group color-picker-group">
+                            <label for="color">Color de muestra</label>
+                            <input type="color" id="color" name="color" value="#ff512f">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción corta</label>
+                        <textarea id="descripcion" name="descripcion" rows="3" placeholder="Detalles técnicos, rendimiento y superficies recomendadas..."></textarea>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-save">Guardar Cambios</button>
+                        <button type="reset" class="btn-clear">Limpiar Campos</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 CromaStudio Pinturerías. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
 </body>
 </html>
