@@ -2,7 +2,7 @@
 <html lang="es-AR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Techos 21 | Construcción y Reparación de Techos, Entrepisos y Escaleras</title>
     <meta name="description" content="Especialistas en construcción de techos de tejas y chapa, entrepisos, escaleras de madera, reparaciones e impermeabilización de losas. Presupuestos sin cargo.">
     
@@ -28,9 +28,9 @@
                     },
                     colors: {
                         brand: {
-                            navy: '#0B2545',
-                            navyLight: '#13315C',
-                            orange: '#F25C05',
+                            navy: '#0D2240',
+                            navyLight: '#163663',
+                            orange: '#F15A24',
                             orangeBright: '#FF6B00',
                             lightBg: '#F4F6F9'
                         }
@@ -42,7 +42,7 @@
                     keyframes: {
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-8px)' },
+                            '50%': { transform: 'translateY(-6px)' },
                         }
                     }
                 }
@@ -51,19 +51,32 @@
     </script>
 
     <style>
-        /* Estilos personalizados para formas geométricas inspiradas en el flyer */
-        .hero-diagonal-bg {
-            background: linear-gradient(135deg, #F4F6F9 0%, #FFFFFF 60%, #E8EEF5 100%);
-        }
-        
-        .hexagon-clip {
-            clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0% 50%);
+        /* Prevención estricta de desbordamiento horizontal en celulares */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
         }
 
+        /* Fondo diagonal inspirado en el flyer */
+        .hero-diagonal-bg {
+            background: linear-gradient(155deg, #F4F6F9 0%, #FFFFFF 55%, #E6ECF5 100%);
+        }
+
+        /* Ocultar barra de scroll en pestañas deslizables móviles pero permitir el swipe */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Animación de entrada suave al hacer scroll */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: translateY(24px);
+            transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .reveal.active {
@@ -91,7 +104,7 @@
             left: 120%;
         }
 
-        /* Pulse personalizado para WhatsApp flotante */
+        /* Pulse personalizado para WhatsApp flotante escritorio */
         @keyframes wa-ring {
             0% { transform: scale(0.95); opacity: 0.7; }
             70% { transform: scale(1.4); opacity: 0; }
@@ -106,93 +119,94 @@
             z-index: -1;
             animation: wa-ring 2s infinite;
         }
+
+        /* Soporte para áreas seguras en iPhone (notch / barra inferior) */
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+        }
     </style>
 </head>
-<body class="bg-white text-slate-800 font-sans antialiased overflow-x-hidden selection:bg-brand-orange selection:text-white">
+<body class="bg-white text-slate-800 font-sans antialiased selection:bg-brand-orange selection:text-white pb-20 md:pb-0">
 
     <!-- ===================================================================== -->
-    <!-- BARRA DE NAVEGACIÓN FIJA (STICKY NAVBAR)                                -->
+    <!-- BARRA DE NAVEGACIÓN COMPACTA Y RESPONSIVA (STICKY NAVBAR)             -->
     <!-- ===================================================================== -->
     <header id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 sm:h-20">
                 
-                <!-- LOGO PRINCIPAL TECHOS 21 (Vectorial fiel al flyer + opción de imagen local) -->
-                <a href="#inicio" class="flex items-center group focus:outline-none" aria-label="Techos 21 Inicio">
+                <!-- LOGO PRINCIPAL TECHOS 21 (Adaptable desde 320px hasta escritorio) -->
+                <a href="#inicio" class="flex items-center group focus:outline-none shrink-0" aria-label="Techos 21 Inicio">
                     <!-- 
-                        NOTA PARA EL USUARIO: Si preferís usar tu archivo de imagen recortado, 
-                        descomentá la etiqueta <img> de abajo y ocultá el <svg>.
-                        <img src="logo-techos21.png" alt="Logo Techos 21" class="h-14 w-auto object-contain">
+                        Si tenés el archivo de imagen recortado en tu carpeta, podés usarlo así:
+                        <img src="logo-techos21.png" alt="Logo Techos 21" class="h-11 sm:h-14 w-auto object-contain">
                     -->
-                    <svg class="h-14 sm:h-16 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="h-11 sm:h-14 md:h-16 w-auto transition-transform duration-300 group-hover:scale-105" viewBox="0 0 360 135" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <defs>
                             <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                                 <stop offset="0%" stop-color="#FF7A00"/>
-                                <stop offset="100%" stop-color="#E64A00"/>
+                                <stop offset="100%" stop-color="#F15A24"/>
                             </linearGradient>
                             <linearGradient id="swooshGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                                <stop offset="0%" stop-color="#F25C05"/>
+                                <stop offset="0%" stop-color="#F15A24"/>
                                 <stop offset="50%" stop-color="#FF8C00"/>
-                                <stop offset="100%" stop-color="#0B2545"/>
+                                <stop offset="100%" stop-color="#0D2240"/>
                             </linearGradient>
                         </defs>
                         
-                        <!-- Techo Izquierdo (Fondo) -->
+                        <!-- Techo Izquierdo -->
                         <polygon points="48,68 92,35 135,68" fill="#FFFFFF"/>
                         <polygon points="92,35 135,68 158,64 112,33" fill="url(#orangeGrad)"/>
-                        <!-- Líneas de tejas izquierda -->
-                        <line x1="102" y1="34" x2="142" y2="66" stroke="#0B2545" stroke-width="1.5" opacity="0.4"/>
-                        <line x1="107" y1="34" x2="149" y2="65" stroke="#0B2545" stroke-width="1.5" opacity="0.4"/>
-                        <path d="M44 70 L92 33 L137 68" stroke="#0B2545" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="102" y1="34" x2="142" y2="66" stroke="#0D2240" stroke-width="1.5" opacity="0.4"/>
+                        <line x1="107" y1="34" x2="149" y2="65" stroke="#0D2240" stroke-width="1.5" opacity="0.4"/>
+                        <path d="M44 70 L92 33 L137 68" stroke="#0D2240" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 
-                        <!-- Techo Derecho (Fondo) -->
+                        <!-- Techo Derecho -->
                         <polygon points="222,68 258,40 295,68" fill="#FFFFFF"/>
                         <polygon points="222,68 258,40 238,38 202,64" fill="url(#orangeGrad)"/>
-                        <path d="M220 68 L258 38 L298 70" stroke="#0B2545" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M220 68 L258 38 L298 70" stroke="#0D2240" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
 
                         <!-- Chimenea Azul Marino -->
-                        <polygon points="215,44 215,21 232,17 245,22 245,48" fill="#0B2545"/>
+                        <polygon points="215,44 215,21 232,17 245,22 245,48" fill="#0D2240"/>
                         <polygon points="215,21 232,17 245,22 232,26" fill="#1D4E89"/>
                         <line x1="215" y1="25" x2="232" y2="29" stroke="#FFFFFF" stroke-width="1.5"/>
                         <line x1="232" y1="29" x2="245" y2="25" stroke="#FFFFFF" stroke-width="1.5"/>
 
                         <!-- Techo Central Principal -->
                         <polygon points="95,70 165,14 235,70" fill="#FFFFFF"/>
-                        <!-- Falda naranja de tejas central -->
                         <polygon points="165,14 235,70 264,66 190,13" fill="url(#orangeGrad)"/>
-                        <!-- Textura de tejas en el techo central -->
-                        <line x1="173" y1="14" x2="244" y2="69" stroke="#0B2545" stroke-width="1.8" opacity="0.35"/>
-                        <line x1="181" y1="14" x2="253" y2="68" stroke="#0B2545" stroke-width="1.8" opacity="0.35"/>
+                        <line x1="173" y1="14" x2="244" y2="69" stroke="#0D2240" stroke-width="1.8" opacity="0.35"/>
+                        <line x1="181" y1="14" x2="253" y2="68" stroke="#0D2240" stroke-width="1.8" opacity="0.35"/>
                         <line x1="185" y1="30" x2="210" y2="28" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
                         <line x1="202" y1="45" x2="230" y2="43" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
                         <line x1="220" y1="58" x2="250" y2="56" stroke="#FFFFFF" stroke-width="1.5" opacity="0.6"/>
 
                         <!-- Alero Azul Marino Central -->
-                        <path d="M90 72 L165 12 L240 72" stroke="#0B2545" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M90 72 L165 12 L240 72" stroke="#0D2240" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M90 72 L165 12 L240 72" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
 
-                        <!-- Ventana Cuadrada de 4 paneles -->
-                        <rect x="155" y="42" width="20" height="20" rx="1.5" fill="#0B2545"/>
+                        <!-- Ventana Cuadrada -->
+                        <rect x="155" y="42" width="20" height="20" rx="1.5" fill="#0D2240"/>
                         <line x1="165" y1="42" x2="165" y2="62" stroke="#FFFFFF" stroke-width="2"/>
                         <line x1="155" y1="52" x2="175" y2="52" stroke="#FFFFFF" stroke-width="2"/>
 
                         <!-- Curva dinámica inferior (Swoosh) -->
                         <path d="M38 77 Q 175 63 315 78 Q 175 70 38 77 Z" fill="url(#swooshGrad)"/>
 
-                        <!-- Texto "Techos" en Azul Marino -->
-                        <text x="34" y="118" font-family="'Montserrat', sans-serif" font-weight="900" font-size="45" letter-spacing="-1.5" fill="#0B2545">Techos</text>
+                        <!-- Texto "Techos" -->
+                        <text x="34" y="118" font-family="'Montserrat', sans-serif" font-weight="900" font-size="45" letter-spacing="-1.5" fill="#0D2240">Techos</text>
                         
-                        <!-- Texto "21" en Naranja Vibrante -->
+                        <!-- Texto "21" -->
                         <text x="235" y="118" font-family="'Montserrat', sans-serif" font-weight="900" font-size="47" letter-spacing="-1" fill="url(#orangeGrad)">21</text>
 
                         <!-- Subrayado geométrico inferior -->
-                        <polygon points="36,124 165,124 158,129 32,129" fill="#0B2545"/>
+                        <polygon points="36,124 165,124 158,129 32,129" fill="#0D2240"/>
                         <polygon points="170,124 302,124 298,129 163,129" fill="url(#orangeGrad)"/>
                     </svg>
                 </a>
 
                 <!-- Enlaces de Navegación (Escritorio) -->
-                <nav class="hidden md:flex items-center space-x-8">
+                <nav class="hidden lg:flex items-center space-x-7">
                     <a href="#inicio" class="text-sm font-semibold text-brand-navy hover:text-brand-orange transition-colors">Inicio</a>
                     <a href="#servicios" class="text-sm font-semibold text-brand-navy hover:text-brand-orange transition-colors">Servicios</a>
                     <a href="#cotizador" class="text-sm font-semibold text-brand-navy hover:text-brand-orange transition-colors">Presupuesto Rápido</a>
@@ -200,8 +214,8 @@
                     <a href="#contacto" class="text-sm font-semibold text-brand-navy hover:text-brand-orange transition-colors">Contacto</a>
                 </nav>
 
-                <!-- Botones Rápidos (Escritorio) -->
-                <div class="hidden md:flex items-center space-x-3">
+                <!-- Botones Rápidos (Tablet / Escritorio) -->
+                <div class="hidden md:flex items-center space-x-2.5">
                     <a href="tel:+5491130124163" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-bold text-brand-navy bg-slate-100 hover:bg-slate-200 transition-all" title="Llamar al 11 3012-4163">
                         <i class="fa-solid fa-phone text-brand-orange"></i>
                         <span>11 3012-4163</span>
@@ -212,31 +226,47 @@
                     </a>
                 </div>
 
-                <!-- Botón Menú Móvil -->
-                <div class="flex md:hidden items-center gap-2">
-                    <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20un%20presupuesto." target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-[#25D366] text-white shadow-sm" aria-label="WhatsApp Directo">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
+                <!-- Controles Compactos para Celular (Hasta 767px) -->
+                <div class="flex md:hidden items-center gap-1.5">
+                    <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20un%20presupuesto." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#25D366] active:scale-95 text-white text-xs font-extrabold shadow-sm transition-transform" aria-label="WhatsApp Directo">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span class="hidden xs:inline">Chat</span>
                     </a>
-                    <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-xl text-brand-navy hover:bg-slate-100 focus:outline-none" aria-label="Abrir menú">
-                        <i class="fa-solid fa-bars text-2xl"></i>
+                    <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-xl text-brand-navy hover:bg-slate-100 active:bg-slate-200 focus:outline-none transition-colors" aria-label="Abrir menú de navegación" aria-expanded="false">
+                        <i class="fa-solid fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Menú Desplegable Móvil -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2 shadow-xl">
-            <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-bold text-brand-navy hover:bg-slate-50 hover:text-brand-orange">Inicio</a>
-            <a href="#servicios" class="mobile-link block px-4 py-3 rounded-xl text-base font-bold text-brand-navy hover:bg-slate-50 hover:text-brand-orange">Nuestros Servicios</a>
-            <a href="#cotizador" class="mobile-link block px-4 py-3 rounded-xl text-base font-bold text-brand-navy hover:bg-slate-50 hover:text-brand-orange">Cotizador en 1 Clic</a>
-            <a href="#nosotros" class="mobile-link block px-4 py-3 rounded-xl text-base font-bold text-brand-navy hover:bg-slate-50 hover:text-brand-orange">Por Qué Elegirnos</a>
-            <a href="#contacto" class="mobile-link block px-4 py-3 rounded-xl text-base font-bold text-brand-navy hover:bg-slate-50 hover:text-brand-orange">Contacto Directo</a>
+        <!-- Menú Desplegable Táctil Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-5 space-y-1.5 shadow-2xl">
+            <a href="#inicio" class="mobile-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-bold text-brand-navy active:bg-slate-100">
+                <span>Inicio</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+            </a>
+            <a href="#servicios" class="mobile-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-bold text-brand-navy active:bg-slate-100">
+                <span>Nuestros 6 Servicios</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+            </a>
+            <a href="#cotizador" class="mobile-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-bold text-brand-navy active:bg-slate-100">
+                <span>Presupuesto en 1 Clic</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+            </a>
+            <a href="#nosotros" class="mobile-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-bold text-brand-navy active:bg-slate-100">
+                <span>Por Qué Elegirnos</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+            </a>
+            <a href="#contacto" class="mobile-link flex items-center justify-between px-4 py-3 rounded-xl text-base font-bold text-brand-navy active:bg-slate-100">
+                <span>Contacto Directo</span>
+                <i class="fa-solid fa-chevron-right text-xs text-slate-400"></i>
+            </a>
             
-            <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-3">
-                <a href="tel:+5491130124163" class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-brand-navy text-white font-bold text-sm">
-                    <i class="fa-solid fa-phone"></i> Llamar
+            <div class="pt-3 border-t border-slate-100 grid grid-cols-2 gap-2.5">
+                <a href="tel:+5491130124163" class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-brand-navy active:scale-95 text-white font-bold text-sm transition-transform">
+                    <i class="fa-solid fa-phone text-brand-orange"></i> 11 3012-4163
                 </a>
-                <a href="https://www.instagram.com/pintureriacolor21/" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 text-white font-bold text-sm">
+                <a href="https://instagram.com/pintureriacolor21" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 py-3 px-3 rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500 active:scale-95 text-white font-bold text-sm transition-transform">
                     <i class="fa-brands fa-instagram"></i> Instagram
                 </a>
             </div>
@@ -244,118 +274,109 @@
     </header>
 
     <!-- ===================================================================== -->
-    <!-- HERO SECTION (IMPACTO VISUAL + FORMAS GEOMÉTRICAS DEL FLYER)          -->
+    <!-- HERO SECTION (OPTIMIZADO PARA PANTALLA VERTICAL DE CELULAR)           -->
     <!-- ===================================================================== -->
-    <section id="inicio" class="relative pt-28 pb-16 lg:pt-36 lg:pb-24 hero-diagonal-bg overflow-hidden">
-        <!-- Elementos geométricos decorativos de fondo (inspirados en el flyer) -->
+    <section id="inicio" class="relative pt-24 pb-12 sm:pt-32 sm:pb-16 lg:pt-36 lg:pb-24 hero-diagonal-bg overflow-hidden">
+        <!-- Formas geométricas decorativas (escritorio) -->
         <div class="hidden lg:block absolute top-0 right-0 w-1/3 h-full bg-brand-navy transform skew-x-[-14deg] translate-x-24 z-0"></div>
         <div class="hidden lg:block absolute top-0 right-0 w-16 h-full bg-brand-orange transform skew-x-[-14deg] -translate-x-64 z-0 opacity-95"></div>
-        
-        <!-- Puntos decorativos -->
-        <div class="absolute top-32 left-6 grid grid-cols-5 gap-2 opacity-20 pointer-events-none">
-            <span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span>
-            <span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span>
-            <span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span><span class="w-2 h-2 rounded-full bg-brand-navy"></span>
-        </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 
-                <!-- Columna Izquierda: Textos y Llamadas a la Acción -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-navy text-white text-xs sm:text-sm font-bold tracking-wide uppercase shadow-md">
+                <!-- Columna Principal: Textos y Botones Táctiles -->
+                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-navy text-white text-[11px] sm:text-xs font-bold tracking-wide uppercase shadow-md">
                         <i class="fa-solid fa-hammer text-brand-orange"></i>
-                        <span>Especialistas en Techos y Estructuras en Buenos Aires</span>
+                        <span>Especialistas en Techos y Estructuras</span>
                     </div>
 
-                    <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-brand-navy leading-tight">
-                        Soluciones Integrales en <span class="text-brand-orange">Techos</span>, Entrepisos y Madera
+                    <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-black text-brand-navy leading-[1.15]">
+                        Construcción y Reparación de <span class="text-brand-orange">Techos</span>, Entrepisos y Escaleras
                     </h1>
 
-                    <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
-                        En <strong class="text-brand-navy">Techos 21</strong> construimos, reparamos e impermeabilizamos con materiales de primera calidad y mano de obra especializada. Protegé tu hogar o comercio con garantía y terminaciones impecables.
+                    <p class="text-sm sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        En <strong class="text-brand-navy">Techos 21</strong> brindamos soluciones definitivas en techos de tejas y chapa, entrepisos, escaleras de madera e impermeabilización de losas. Presupuestos sin cargo.
                     </p>
 
-                    <!-- Botones de Acción Directa (1 Clic) -->
-                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                        <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Me%20gustar%C3%ADa%20pedir%20un%20presupuesto." target="_blank" rel="noopener noreferrer" class="btn-shine w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-base sm:text-lg shadow-xl shadow-green-600/25 transition-all transform hover:-translate-y-1">
+                    <!-- Botones de Acción Directa Táctiles (1 Clic) -->
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-1">
+                        <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Me%20gustar%C3%ADa%20pedir%20un%20presupuesto." target="_blank" rel="noopener noreferrer" class="btn-shine inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-extrabold text-base sm:text-lg shadow-xl shadow-green-600/25 transition-all">
                             <i class="fa-brands fa-whatsapp text-2xl"></i>
                             <span>Cotizar por WhatsApp</span>
                         </a>
 
-                        <a href="tel:+5491130124163" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-brand-navy hover:bg-brand-navyLight text-white font-bold text-base sm:text-lg shadow-lg shadow-brand-navy/20 transition-all transform hover:-translate-y-1">
+                        <a href="tel:+5491130124163" class="inline-flex items-center justify-center gap-3 px-6 py-4 rounded-2xl bg-brand-navy hover:bg-brand-navyLight active:scale-[0.98] text-white font-bold text-base sm:text-lg shadow-lg shadow-brand-navy/20 transition-all">
                             <i class="fa-solid fa-phone-volume text-brand-orange text-xl"></i>
-                            <span>11 3012-4163</span>
+                            <span>Llamar: 11 3012-4163</span>
                         </a>
                     </div>
 
-                    <!-- Acceso rápido a Instagram y garantía -->
-                    <div class="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-sm font-semibold text-slate-600">
-                        <a href="https://www.instagram.com/pintureriacolor21/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-navy hover:text-brand-orange transition-colors group">
-                            <span class="w-8 h-8 rounded-lg bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white flex items-center justify-center shadow-sm group-hover:scale-110 transition-transform">
-                                <i class="fa-brands fa-instagram text-base"></i>
+                    <!-- Enlace directo a Instagram y confianza -->
+                    <div class="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm font-semibold text-slate-600">
+                        <a href="https://instagram.com/pintureriacolor21" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-brand-navy hover:text-brand-orange transition-colors group">
+                            <span class="w-7 h-7 rounded-lg bg-gradient-to-tr from-yellow-500 via-pink-500 to-purple-600 text-white flex items-center justify-center shadow-sm">
+                                <i class="fa-brands fa-instagram text-sm"></i>
                             </span>
-                            <span>Seguinos: <strong class="underline decoration-brand-orange">@pintureriacolor21</strong></span>
+                            <span>Instagram: <strong class="underline decoration-brand-orange">@pintureriacolor21</strong></span>
                         </a>
-                        <span class="hidden sm:inline text-slate-300">|</span>
-                        <div class="inline-flex items-center gap-2">
-                            <i class="fa-solid fa-circle-check text-brand-orange text-base"></i>
-                            <span>Presupuestos sin cargo</span>
+                        <div class="inline-flex items-center gap-1.5">
+                            <i class="fa-solid fa-circle-check text-brand-orange"></i>
+                            <span>Atención inmediata</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Columna Derecha: Composición Visual Hexagonal inspirada en el flyer -->
-                <div class="lg:col-span-5 relative">
+                <!-- Columna Visual: Collage Adaptado a Celular -->
+                <div class="lg:col-span-5 relative mt-2 lg:mt-0">
                     <div class="relative mx-auto max-w-md lg:max-w-none">
-                        <!-- Marco decorativo naranja -->
-                        <div class="relative z-10 grid grid-cols-2 gap-3 sm:gap-4 p-3 bg-white/80 backdrop-blur-md rounded-3xl shadow-2xl border border-slate-200/70">
+                        <div class="relative z-10 grid grid-cols-2 gap-2.5 sm:gap-4 p-2.5 sm:p-3 bg-white/90 backdrop-blur-md rounded-3xl shadow-xl border border-slate-200/80">
                             
-                            <!-- Foto 1: Techo de tejas -->
-                            <div class="col-span-2 relative rounded-2xl overflow-hidden h-48 sm:h-56 group">
+                            <!-- Foto Principal: Techo de tejas -->
+                            <div class="col-span-2 relative rounded-2xl overflow-hidden h-44 sm:h-56 group">
                                 <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" 
-                                     onerror="this.src='https://placehold.co/800x450/0B2545/FFFFFF?text=Techos+de+Tejas'"
+                                     onerror="this.src='https://placehold.co/800x450/0D2240/FFFFFF?text=Techos+de+Tejas+y+Chapa'"
                                      alt="Construcción de techos de tejas" 
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/80 via-transparent to-transparent flex items-end p-4">
-                                    <span class="text-white font-bold text-sm sm:text-base flex items-center gap-2">
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent flex items-end p-3.5 sm:p-4">
+                                    <span class="text-white font-bold text-xs sm:text-base flex items-center gap-2">
                                         <span class="w-2.5 h-2.5 rounded-full bg-brand-orange"></span>
                                         Techos de Tejas y Chapa
                                     </span>
                                 </div>
                             </div>
 
-                            <!-- Foto 2: Impermeabilización de losas -->
-                            <div class="relative rounded-2xl overflow-hidden h-36 sm:h-40 group">
+                            <!-- Foto 2: Impermeabilización -->
+                            <div class="relative rounded-2xl overflow-hidden h-32 sm:h-40 group">
                                 <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" 
-                                     onerror="this.src='https://placehold.co/400x300/F25C05/FFFFFF?text=Impermeabilizacion'"
+                                     onerror="this.src='https://placehold.co/400x300/F15A24/FFFFFF?text=Impermeabilizacion'"
                                      alt="Impermeabilización de losas" 
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent flex items-end p-3">
-                                    <span class="text-white font-bold text-xs sm:text-sm">Impermeabilización</span>
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent flex items-end p-2.5 sm:p-3">
+                                    <span class="text-white font-bold text-[11px] sm:text-sm">Impermeabilización</span>
                                 </div>
                             </div>
 
-                            <!-- Foto 3: Escaleras y Entrepisos de madera -->
-                            <div class="relative rounded-2xl overflow-hidden h-36 sm:h-40 group">
+                            <!-- Foto 3: Escaleras y Entrepisos -->
+                            <div class="relative rounded-2xl overflow-hidden h-32 sm:h-40 group">
                                 <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" 
-                                     onerror="this.src='https://placehold.co/400x300/13315C/FFFFFF?text=Escaleras+y+Entrepisos'"
+                                     onerror="this.src='https://placehold.co/400x300/163663/FFFFFF?text=Entrepisos+y+Escaleras'"
                                      alt="Escaleras de madera y entrepisos" 
                                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent flex items-end p-3">
-                                    <span class="text-white font-bold text-xs sm:text-sm">Entrepisos y Escaleras</span>
+                                <div class="absolute inset-0 bg-gradient-to-t from-brand-navy/85 via-transparent to-transparent flex items-end p-2.5 sm:p-3">
+                                    <span class="text-white font-bold text-[11px] sm:text-sm">Entrepisos y Escaleras</span>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Tarjeta flotante de atención inmediata -->
-                        <div class="animate-float absolute -bottom-5 -left-3 sm:-left-6 z-20 bg-brand-navy text-white p-4 rounded-2xl shadow-xl border-2 border-brand-orange flex items-center gap-3">
-                            <div class="w-11 h-11 rounded-xl bg-brand-orange flex items-center justify-center text-white text-xl shrink-0">
+                        <!-- Badge flotante -->
+                        <div class="animate-float absolute -bottom-4 left-2 sm:-left-5 z-20 bg-brand-navy text-white px-3.5 py-2.5 sm:p-4 rounded-2xl shadow-xl border-2 border-brand-orange flex items-center gap-2.5 sm:gap-3">
+                            <div class="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-brand-orange flex items-center justify-center text-white text-base sm:text-xl shrink-0">
                                 <i class="fa-solid fa-shield-halved"></i>
                             </div>
                             <div>
-                                <p class="text-xs text-slate-300 font-medium">Trabajo Garantizado</p>
-                                <p class="text-sm font-extrabold">Atención Personalizada</p>
+                                <p class="text-[10px] sm:text-xs text-slate-300 font-medium">Trabajo Garantizado</p>
+                                <p class="text-xs sm:text-sm font-extrabold">Presupuesto Sin Cargo</p>
                             </div>
                         </div>
                     </div>
@@ -366,302 +387,302 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- BANDA DE ESTADÍSTICAS Y CONFIANZA (CONTADORES ANIMADOS)               -->
+    <!-- BANDA DE ESTADÍSTICAS COMPACTA                                        -->
     <!-- ===================================================================== -->
-    <section class="bg-brand-navy py-10 border-y-4 border-brand-orange text-white">
+    <section class="bg-brand-navy py-8 sm:py-10 border-y-4 border-brand-orange text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                <div class="space-y-1">
-                    <div class="font-display text-3xl sm:text-4xl font-black text-brand-orange">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 text-center">
+                <div class="space-y-0.5">
+                    <div class="font-display text-2xl sm:text-4xl font-black text-brand-orange">
                         +<span class="counter" data-target="15">0</span>
                     </div>
-                    <p class="text-xs sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Años de Experiencia</p>
+                    <p class="text-[11px] sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Años de Experiencia</p>
                 </div>
-                <div class="space-y-1">
-                    <div class="font-display text-3xl sm:text-4xl font-black text-brand-orange">
+                <div class="space-y-0.5">
+                    <div class="font-display text-2xl sm:text-4xl font-black text-brand-orange">
                         +<span class="counter" data-target="450">0</span>
                     </div>
-                    <p class="text-xs sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Techos y Obras Realizadas</p>
+                    <p class="text-[11px] sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Obras Realizadas</p>
                 </div>
-                <div class="space-y-1">
-                    <div class="font-display text-3xl sm:text-4xl font-black text-brand-orange">
+                <div class="space-y-0.5">
+                    <div class="font-display text-2xl sm:text-4xl font-black text-brand-orange">
                         <span class="counter" data-target="100">0</span>%
                     </div>
-                    <p class="text-xs sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Compromiso y Calidad</p>
+                    <p class="text-[11px] sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Compromiso y Calidad</p>
                 </div>
-                <div class="space-y-1">
-                    <div class="font-display text-3xl sm:text-4xl font-black text-brand-orange">
-                        24<span class="text-2xl">hs</span>
+                <div class="space-y-0.5">
+                    <div class="font-display text-2xl sm:text-4xl font-black text-brand-orange">
+                        24<span class="text-xl sm:text-2xl">hs</span>
                     </div>
-                    <p class="text-xs sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Respuesta en Presupuestos</p>
+                    <p class="text-[11px] sm:text-sm font-semibold text-slate-200 uppercase tracking-wider">Respuesta Rápida</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SECCIÓN DE SERVICIOS (LOS 6 SERVICIOS SOLICITADOS CON ACCIÓN DIRECTA) -->
+    <!-- SECCIÓN DE SERVICIOS CON PESTAÑAS DESLIZABLES EN MÓVIL (SWIPE TABS)   -->
     <!-- ===================================================================== -->
-    <section id="servicios" class="py-20 bg-brand-lightBg relative">
+    <section id="servicios" class="py-14 sm:py-20 bg-brand-lightBg relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Encabezado de Sección -->
-            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/10 text-brand-orange font-bold text-xs uppercase tracking-widest mb-3">
+            <!-- Encabezado -->
+            <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12 reveal">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-orange/15 text-brand-orange font-bold text-xs uppercase tracking-widest mb-2.5">
                     <i class="fa-solid fa-helmet-safety"></i>
-                    <span>Nuestros Servicios Especializados</span>
+                    <span>Nuestros Servicios</span>
                 </div>
-                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy mb-4">
-                    Todo lo que tu techo y estructura necesitan
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-brand-navy mb-3">
+                    Soluciones Profesionales para tu Hogar
                 </h2>
-                <p class="text-slate-600 text-base sm:text-lg">
-                    Seleccioná el servicio que necesitás y consultanos directamente por WhatsApp en un solo clic.
+                <p class="text-slate-600 text-sm sm:text-lg">
+                    Deslizá las categorías o tocá cualquier servicio para consultar directamente por WhatsApp.
                 </p>
             </div>
 
-            <!-- Filtros interactivos de categoría -->
-            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-10 reveal">
-                <button onclick="filterServices('all', this)" class="filter-btn active px-5 py-2.5 rounded-xl font-bold text-sm bg-brand-navy text-white shadow-md transition-all">
-                    Todos los Servicios (6)
+            <!-- Pestañas de filtro deslizables horizontalmente en celulares (Swipeable) -->
+            <div class="flex overflow-x-auto no-scrollbar sm:flex-wrap sm:justify-center gap-2.5 pb-3 mb-7 sm:mb-10 -mx-4 px-4 sm:mx-0 sm:px-0 reveal">
+                <button onclick="filterServices('all', this)" class="filter-btn active shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-brand-navy text-white shadow-md transition-all">
+                    Todos (6)
                 </button>
-                <button onclick="filterServices('techos', this)" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-brand-navy hover:bg-brand-orange hover:text-white border border-slate-200 transition-all">
-                    Construcción de Techos
+                <button onclick="filterServices('techos', this)" class="filter-btn shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white text-brand-navy hover:bg-brand-orange hover:text-white border border-slate-200 transition-all">
+                    Techos de Tejas y Chapa
                 </button>
-                <button onclick="filterServices('madera', this)" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-brand-navy hover:bg-brand-orange hover:text-white border border-slate-200 transition-all">
+                <button onclick="filterServices('madera', this)" class="filter-btn shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white text-brand-navy hover:bg-brand-orange hover:text-white border border-slate-200 transition-all">
                     Entrepisos y Escaleras
                 </button>
-                <button onclick="filterServices('mantenimiento', this)" class="filter-btn px-5 py-2.5 rounded-xl font-bold text-sm bg-white text-brand-navy hover:bg-brand-orange hover:text-white border border-slate-200 transition-all">
+                <button onclick="filterServices('mantenimiento', this)" class="filter-btn shrink-0 px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm bg-white text-brand-navy hover:bg-brand-orange hover:text-white border border-slate-200 transition-all">
                     Reparación e Impermeabilización
                 </button>
             </div>
 
-            <!-- Grilla de 6 Tarjetas de Servicios -->
-            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Grilla Responsiva de los 6 Servicios -->
+            <div id="services-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 
                 <!-- SERVICIO 1: Construcción de techos de tejas -->
-                <article data-category="techos" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5">
+                <article data-category="techos" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-52 overflow-hidden bg-brand-navy">
+                        <div class="relative h-48 sm:h-52 overflow-hidden bg-brand-navy">
                             <img src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=800&q=80" 
-                                 onerror="this.src='https://placehold.co/600x400/0B2545/FFFFFF?text=Techos+de+Tejas'"
+                                 onerror="this.src='https://placehold.co/600x400/0D2240/FFFFFF?text=Techos+de+Tejas'"
                                  alt="Construcción de techos de tejas" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-lg">
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-lg shadow-lg">
                                 <i class="fa-solid fa-house-chimney"></i>
                             </div>
-                            <span class="absolute bottom-3 right-3 px-3 py-1 rounded-lg bg-brand-navy/90 text-white text-xs font-bold backdrop-blur-sm">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-brand-navy/90 text-white text-[11px] font-bold backdrop-blur-sm">
                                 Obra Nueva
                             </span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-display text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
                                 Construcción de techos de tejas
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                                 Armado completo de estructuras de madera a la vista o tradicionales, aislación térmica e hidrófuga, y colocación de tejas francesas, coloniales o esmaltadas con máxima estética y durabilidad.
                             </p>
-                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700 mb-4">
+                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700">
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Estructura de madera estacionada</li>
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Aislación térmica y barrera de vapor</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
                         <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20Construcci%C3%B3n%20de%20techos%20de%20tejas." 
                            target="_blank" rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy group-hover:bg-[#25D366] text-white font-bold text-sm transition-colors shadow-sm">
+                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy hover:bg-[#25D366] active:bg-[#25D366] active:scale-[0.98] text-white font-bold text-sm transition-all shadow-sm">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Consultar por este servicio</span>
+                            <span>Consultar por WhatsApp</span>
                         </a>
                     </div>
                 </article>
 
                 <!-- SERVICIO 2: Construcción de techos de chapa -->
-                <article data-category="techos" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5">
+                <article data-category="techos" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-52 overflow-hidden bg-brand-navy">
+                        <div class="relative h-48 sm:h-52 overflow-hidden bg-brand-navy">
                             <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80" 
-                                 onerror="this.src='https://placehold.co/600x400/13315C/FFFFFF?text=Techos+de+Chapa'"
+                                 onerror="this.src='https://placehold.co/600x400/163663/FFFFFF?text=Techos+de+Chapa'"
                                  alt="Construcción de techos de chapa" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-lg">
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-lg shadow-lg">
                                 <i class="fa-solid fa-layer-group"></i>
                             </div>
-                            <span class="absolute bottom-3 right-3 px-3 py-1 rounded-lg bg-brand-navy/90 text-white text-xs font-bold backdrop-blur-sm">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-brand-navy/90 text-white text-[11px] font-bold backdrop-blur-sm">
                                 Residencial e Industrial
                             </span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-display text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
                                 Construcción de techos de chapa
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                                Instalación de cubiertas de chapa sinusoidal, trapezoidal o prepintada (negra, gris, color) sobre cabriadas de madera o perfiles metálicos, con zinguería a medida y excelente pendiente.
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                                Instalación de cubiertas de chapa sinusoidal, trapezoidal o prepintada sobre cabriadas de madera o perfiles metálicos, con zinguería a medida y excelente caída pluvial.
                             </p>
-                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700 mb-4">
+                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700">
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Zinguería, babetas y canaletas a medida</li>
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Aislación termoacústica anti-condensación</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
                         <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20Construcci%C3%B3n%20de%20techos%20de%20chapa." 
                            target="_blank" rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy group-hover:bg-[#25D366] text-white font-bold text-sm transition-colors shadow-sm">
+                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy hover:bg-[#25D366] active:bg-[#25D366] active:scale-[0.98] text-white font-bold text-sm transition-all shadow-sm">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Consultar por este servicio</span>
+                            <span>Consultar por WhatsApp</span>
                         </a>
                     </div>
                 </article>
 
                 <!-- SERVICIO 3: Construcción de entre pisos -->
-                <article data-category="madera" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5">
+                <article data-category="madera" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-52 overflow-hidden bg-brand-navy">
+                        <div class="relative h-48 sm:h-52 overflow-hidden bg-brand-navy">
                             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
-                                 onerror="this.src='https://placehold.co/600x400/0B2545/FFFFFF?text=Construccion+de+Entrepisos'"
+                                 onerror="this.src='https://placehold.co/600x400/0D2240/FFFFFF?text=Construccion+de+Entrepisos'"
                                  alt="Construcción de entre pisos" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-lg">
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-lg shadow-lg">
                                 <i class="fa-solid fa-stairs"></i>
                             </div>
-                            <span class="absolute bottom-3 right-3 px-3 py-1 rounded-lg bg-brand-navy/90 text-white text-xs font-bold backdrop-blur-sm">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-brand-navy/90 text-white text-[11px] font-bold backdrop-blur-sm">
                                 Ampliación de Espacios
                             </span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-display text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
                                 Construcción de entre pisos
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
-                                Aprovechá la altura de tus ambientes ganando metros cuadrados útiles. Diseñamos y construimos entrepisos resistentes en madera maciza o mixtos para dormitorios, estudios, depósitos o locales.
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
+                                Aprovechá la altura de tus ambientes ganando metros cuadrados útiles. Diseñamos y construimos entrepisos resistentes en madera maciza o mixtos para dormitorios, estudios o locales.
                             </p>
-                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700 mb-4">
+                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700">
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Cálculo estructural seguro y firme</li>
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Obra seca, rápida y limpia</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
                         <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20Construcci%C3%B3n%20de%20entre%20pisos." 
                            target="_blank" rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy group-hover:bg-[#25D366] text-white font-bold text-sm transition-colors shadow-sm">
+                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy hover:bg-[#25D366] active:bg-[#25D366] active:scale-[0.98] text-white font-bold text-sm transition-all shadow-sm">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Consultar por este servicio</span>
+                            <span>Consultar por WhatsApp</span>
                         </a>
                     </div>
                 </article>
 
                 <!-- SERVICIO 4: Construcción de escaleras de madera -->
-                <article data-category="madera" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5">
+                <article data-category="madera" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-52 overflow-hidden bg-brand-navy">
+                        <div class="relative h-48 sm:h-52 overflow-hidden bg-brand-navy">
                             <img src="https://images.unsplash.com/photo-1505843490538-5133c6c7d0e1?auto=format&fit=crop&w=800&q=80" 
-                                 onerror="this.src='https://placehold.co/600x400/F25C05/FFFFFF?text=Escaleras+de+Madera'"
+                                 onerror="this.src='https://placehold.co/600x400/F15A24/FFFFFF?text=Escaleras+de+Madera'"
                                  alt="Construcción de escaleras de madera" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-lg">
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-lg shadow-lg">
                                 <i class="fa-solid fa-arrow-up-right-dots"></i>
                             </div>
-                            <span class="absolute bottom-3 right-3 px-3 py-1 rounded-lg bg-brand-navy/90 text-white text-xs font-bold backdrop-blur-sm">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-brand-navy/90 text-white text-[11px] font-bold backdrop-blur-sm">
                                 Diseño a Medida
                             </span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-display text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
                                 Construcción de escaleras de madera
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                                 Escaleras rectas, en L, en U o compensadas fabricadas a medida en maderas duras y semiduras seleccionadas, con barandas, pasamanos y terminaciones de alta carpintería.
                             </p>
-                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700 mb-4">
+                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700">
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Peldaños ergonómicos y sin crujidos</li>
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Barandas y pasamanos personalizados</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
                         <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20Construcci%C3%B3n%20de%20escaleras%20de%20madera." 
                            target="_blank" rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy group-hover:bg-[#25D366] text-white font-bold text-sm transition-colors shadow-sm">
+                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy hover:bg-[#25D366] active:bg-[#25D366] active:scale-[0.98] text-white font-bold text-sm transition-all shadow-sm">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Consultar por este servicio</span>
+                            <span>Consultar por WhatsApp</span>
                         </a>
                     </div>
                 </article>
 
                 <!-- SERVICIO 5: Reparación de techos de tejas y chapas -->
-                <article data-category="mantenimiento" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5">
+                <article data-category="mantenimiento" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-52 overflow-hidden bg-brand-navy">
+                        <div class="relative h-48 sm:h-52 overflow-hidden bg-brand-navy">
                             <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80" 
-                                 onerror="this.src='https://placehold.co/600x400/0B2545/FFFFFF?text=Reparacion+de+Techos'"
+                                 onerror="this.src='https://placehold.co/600x400/0D2240/FFFFFF?text=Reparacion+de+Techos'"
                                  alt="Reparación de techos de tejas y chapas" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-lg">
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-lg shadow-lg">
                                 <i class="fa-solid fa-screwdriver-wrench"></i>
                             </div>
-                            <span class="absolute bottom-3 right-3 px-3 py-1 rounded-lg bg-brand-orange text-white text-xs font-bold shadow-sm">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-brand-orange text-white text-[11px] font-bold shadow-sm">
                                 Solución de Filtraciones
                             </span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-display text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
                                 Reparación de techos de tejas y chapas
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                                 Detección y eliminación definitiva de goteras y filtraciones. Reemplazo de tejas rotas, recambio de chapas oxidadas, sellado de cumbreras, babetas y reparación de maderas dañadas.
                             </p>
-                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700 mb-4">
+                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700">
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Diagnóstico preciso de filtraciones</li>
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Limpieza y mantenimiento preventivo</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
                         <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20Reparaci%C3%B3n%20de%20techos%20de%20tejas%20y%20chapas." 
                            target="_blank" rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy group-hover:bg-[#25D366] text-white font-bold text-sm transition-colors shadow-sm">
+                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy hover:bg-[#25D366] active:bg-[#25D366] active:scale-[0.98] text-white font-bold text-sm transition-all shadow-sm">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Consultar por este servicio</span>
+                            <span>Consultar por WhatsApp</span>
                         </a>
                     </div>
                 </article>
 
                 <!-- SERVICIO 6: Impermeabilización de losas -->
-                <article data-category="mantenimiento" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1.5">
+                <article data-category="mantenimiento" class="service-card reveal bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border border-slate-100 transition-all duration-300 flex flex-col justify-between group">
                     <div>
-                        <div class="relative h-52 overflow-hidden bg-brand-navy">
+                        <div class="relative h-48 sm:h-52 overflow-hidden bg-brand-navy">
                             <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" 
-                                 onerror="this.src='https://placehold.co/600x400/13315C/FFFFFF?text=Impermeabilizacion+de+Losas'"
+                                 onerror="this.src='https://placehold.co/600x400/163663/FFFFFF?text=Impermeabilizacion+de+Losas'"
                                  alt="Impermeabilización de losas" 
-                                 class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
-                            <div class="absolute top-4 left-4 w-12 h-12 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-xl shadow-lg">
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute top-3.5 left-3.5 w-11 h-11 rounded-2xl bg-brand-orange text-white flex items-center justify-center text-lg shadow-lg">
                                 <i class="fa-solid fa-droplet-slash"></i>
                             </div>
-                            <span class="absolute bottom-3 right-3 px-3 py-1 rounded-lg bg-brand-navy/90 text-white text-xs font-bold backdrop-blur-sm">
+                            <span class="absolute bottom-3 right-3 px-2.5 py-1 rounded-lg bg-brand-navy/90 text-white text-[11px] font-bold backdrop-blur-sm">
                                 Terrazas y Azoteas
                             </span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="font-display text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
+                        <div class="p-5 sm:p-6">
+                            <h3 class="font-display text-lg sm:text-xl font-extrabold text-brand-navy mb-2 group-hover:text-brand-orange transition-colors">
                                 Impermeabilización de losas
                             </h3>
-                            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-4">
                                 Protección total contra la humedad y el agua estancada en losas y terrazas. Aplicación de membranas líquidas fibradas, geotextil, membranas asfálticas y sellado de grietas.
                             </p>
-                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700 mb-4">
+                            <ul class="space-y-1.5 text-xs font-semibold text-slate-700">
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Membrana líquida de alta elasticidad</li>
                                 <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-orange"></i> Tratamiento de juntas y grietas estructurales</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="px-6 pb-6">
+                    <div class="px-5 pb-5 sm:px-6 sm:pb-6">
                         <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20Impermeabilizaci%C3%B3n%20de%20losas." 
                            target="_blank" rel="noopener noreferrer"
-                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy group-hover:bg-[#25D366] text-white font-bold text-sm transition-colors shadow-sm">
+                           class="w-full inline-flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl bg-brand-navy hover:bg-[#25D366] active:bg-[#25D366] active:scale-[0.98] text-white font-bold text-sm transition-all shadow-sm">
                             <i class="fa-brands fa-whatsapp text-lg"></i>
-                            <span>Consultar por este servicio</span>
+                            <span>Consultar por WhatsApp</span>
                         </a>
                     </div>
                 </article>
@@ -671,42 +692,42 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- ASISTENTE INTERACTIVO DE PRESUPUESTO EN 1 CLIC (ENVÍO A WHATSAPP)      -->
+    <!-- COTIZADOR RÁPIDO OPTIMIZADO PARA PANTALLAS TÁCTILES                   -->
     <!-- ===================================================================== -->
-    <section id="cotizador" class="py-20 bg-white relative overflow-hidden">
+    <section id="cotizador" class="py-14 sm:py-20 bg-white relative overflow-hidden">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="bg-brand-navy rounded-3xl p-6 sm:p-10 lg:p-12 shadow-2xl border-t-8 border-brand-orange text-white reveal">
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div class="bg-brand-navy rounded-3xl p-5 sm:p-10 lg:p-12 shadow-2xl border-t-8 border-brand-orange text-white reveal">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center">
                     
-                    <div class="lg:col-span-5 space-y-4">
+                    <div class="lg:col-span-5 space-y-3 sm:space-y-4">
                         <span class="inline-block px-3 py-1 rounded-lg bg-brand-orange text-white text-xs font-extrabold uppercase tracking-wider">
-                            Presupuesto Rápido
+                            Presupuesto en 1 Clic
                         </span>
                         <h2 class="font-display text-2xl sm:text-3xl font-black leading-tight">
-                            Armá tu consulta y enviala directo a nuestro WhatsApp
+                            Armá tu consulta y enviala directo a WhatsApp
                         </h2>
-                        <p class="text-slate-300 text-sm leading-relaxed">
-                            Elegí el trabajo que necesitás, indicanos aproximadamente los metros cuadrados o la zona, y te respondemos a la brevedad.
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Elegí el trabajo que necesitás, indicanos tu zona o medidas aproximadas, y se abrirá nuestro chat listo para enviar.
                         </p>
-                        <div class="pt-2 space-y-2 text-sm text-slate-200">
+                        <div class="pt-1 space-y-2 text-xs sm:text-sm text-slate-200">
                             <div class="flex items-center gap-2.5">
                                 <i class="fa-solid fa-circle-check text-brand-orange"></i>
-                                <span>Sin compromiso de compra</span>
+                                <span>Presupuestos sin compromiso</span>
                             </div>
                             <div class="flex items-center gap-2.5">
                                 <i class="fa-solid fa-circle-check text-brand-orange"></i>
-                                <span>Asesoramiento técnico en materiales</span>
+                                <span>Asesoramiento técnico personalizado</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="lg:col-span-7 bg-white text-slate-800 rounded-2xl p-6 shadow-inner">
-                        <form id="quick-quote-form" class="space-y-4">
+                    <div class="lg:col-span-7 bg-white text-slate-800 rounded-2xl p-4 sm:p-6 shadow-inner">
+                        <form id="quick-quote-form" class="space-y-3.5 sm:space-y-4">
                             <div>
                                 <label for="quote-service" class="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-1.5">
                                     1. Seleccioná el servicio
                                 </label>
-                                <select id="quote-service" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 font-semibold text-sm text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                <select id="quote-service" class="w-full px-3.5 py-3.5 rounded-xl border border-slate-300 bg-slate-50 font-semibold text-sm sm:text-base text-brand-navy focus:outline-none focus:ring-2 focus:ring-brand-orange">
                                     <option value="Construcción de techos de tejas">Construcción de techos de tejas</option>
                                     <option value="Construcción de techos de chapa">Construcción de techos de chapa</option>
                                     <option value="Construcción de entre pisos">Construcción de entre pisos</option>
@@ -716,31 +737,31 @@
                                 </select>
                             </div>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
                                 <div>
                                     <label for="quote-zone" class="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-1.5">
                                         2. Localidad / Zona
                                     </label>
-                                    <input type="text" id="quote-zone" placeholder="Ej: Quilmes, Avellaneda, CABA..." class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                    <input type="text" id="quote-zone" placeholder="Ej: Quilmes, Ezpeleta, CABA..." class="w-full px-3.5 py-3.5 rounded-xl border border-slate-300 bg-slate-50 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-brand-orange">
                                 </div>
                                 <div>
                                     <label for="quote-size" class="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-1.5">
-                                        3. Superficie aprox. (Opcional)
+                                        3. Medidas aprox. (Opcional)
                                     </label>
-                                    <input type="text" id="quote-size" placeholder="Ej: 40 m² / 1 escalera" class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                    <input type="text" id="quote-size" placeholder="Ej: 40 m² / 1 escalera" class="w-full px-3.5 py-3.5 rounded-xl border border-slate-300 bg-slate-50 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-brand-orange">
                                 </div>
                             </div>
 
                             <div>
                                 <label for="quote-details" class="block text-xs font-bold uppercase tracking-wider text-brand-navy mb-1.5">
-                                    4. Detalles adicionales (Opcional)
+                                    4. Detalles (Opcional)
                                 </label>
-                                <input type="text" id="quote-details" placeholder="Contanos brevemente qué necesitás..." class="w-full px-4 py-3 rounded-xl border border-slate-300 bg-slate-50 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                <input type="text" id="quote-details" placeholder="Contanos brevemente qué necesitás..." class="w-full px-3.5 py-3.5 rounded-xl border border-slate-300 bg-slate-50 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-brand-orange">
                             </div>
 
-                            <button type="submit" class="btn-shine w-full py-4 px-6 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-extrabold text-base shadow-lg shadow-green-600/20 flex items-center justify-center gap-3 transition-all transform hover:-translate-y-0.5">
+                            <button type="submit" class="btn-shine w-full py-4 px-5 rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] active:scale-[0.98] text-white font-extrabold text-sm sm:text-base shadow-lg shadow-green-600/20 flex items-center justify-center gap-2.5 transition-all">
                                 <i class="fa-brands fa-whatsapp text-2xl"></i>
-                                <span>Enviar Consulta por WhatsApp Ahora</span>
+                                <span>Enviar Consulta por WhatsApp</span>
                             </button>
                         </form>
                     </div>
@@ -751,57 +772,57 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- POR QUÉ ELEGIRNOS (DIFERENCIALES PROFESIONALES)                       -->
+    <!-- POR QUÉ ELEGIRNOS                                                     -->
     <!-- ===================================================================== -->
-    <section id="nosotros" class="py-20 bg-brand-lightBg">
+    <section id="nosotros" class="py-14 sm:py-20 bg-brand-lightBg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal">
                 <span class="text-brand-orange font-extrabold text-xs uppercase tracking-widest">Calidad Comprobada</span>
-                <h2 class="font-display text-3xl sm:text-4xl font-black text-brand-navy mt-2 mb-4">
-                    ¿Por qué confiar tu obra a Techos 21?
+                <h2 class="font-display text-2xl sm:text-4xl font-black text-brand-navy mt-1.5 mb-3">
+                    ¿Por qué elegir Techos 21?
                 </h2>
-                <p class="text-slate-600">
-                    Combinamos experiencia técnica, materiales certificados y cumplimiento estricto de los plazos acordados.
+                <p class="text-sm sm:text-base text-slate-600">
+                    Experiencia técnica, materiales de primera línea y cumplimiento estricto en cada obra.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="reveal bg-white p-6 rounded-2xl shadow-md border border-slate-100 hover:border-brand-orange transition-colors">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-2xl mb-5">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+                <div class="reveal bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-xl sm:text-2xl mb-4">
                         <i class="fa-solid fa-medal"></i>
                     </div>
-                    <h3 class="font-display font-extrabold text-lg text-brand-navy mb-2">Materiales de Primera</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
+                    <h3 class="font-display font-extrabold text-base sm:text-lg text-brand-navy mb-1.5">Materiales de Primera</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         Trabajamos con maderas seleccionadas, chapas de alto calibre, tejas de primera línea e impermeabilizantes líderes.
                     </p>
                 </div>
 
-                <div class="reveal bg-white p-6 rounded-2xl shadow-md border border-slate-100 hover:border-brand-orange transition-colors">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-2xl mb-5">
+                <div class="reveal bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-xl sm:text-2xl mb-4">
                         <i class="fa-solid fa-ruler-combined"></i>
                     </div>
-                    <h3 class="font-display font-extrabold text-lg text-brand-navy mb-2">Terminaciones Prolijas</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
-                        Cuidamos cada detalle estético y estructural: zinguería exacta, encastres perfectos y limpieza en cada jornada.
+                    <h3 class="font-display font-extrabold text-base sm:text-lg text-brand-navy mb-1.5">Terminaciones Prolijas</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Cuidamos cada detalle estético y estructural: zinguería exacta, encastres perfectos y orden en cada jornada.
                     </p>
                 </div>
 
-                <div class="reveal bg-white p-6 rounded-2xl shadow-md border border-slate-100 hover:border-brand-orange transition-colors">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-2xl mb-5">
+                <div class="reveal bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-xl sm:text-2xl mb-4">
                         <i class="fa-solid fa-clock"></i>
                     </div>
-                    <h3 class="font-display font-extrabold text-lg text-brand-navy mb-2">Cumplimiento en Plazos</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
+                    <h3 class="font-display font-extrabold text-base sm:text-lg text-brand-navy mb-1.5">Cumplimiento en Plazos</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         Planificamos cada etapa de la obra para entregarte tu techo, entrepiso o escalera en tiempo y forma.
                     </p>
                 </div>
 
-                <div class="reveal bg-white p-6 rounded-2xl shadow-md border border-slate-100 hover:border-brand-orange transition-colors">
-                    <div class="w-14 h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-2xl mb-5">
+                <div class="reveal bg-white p-5 sm:p-6 rounded-2xl shadow-sm border border-slate-100">
+                    <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-brand-navy text-brand-orange flex items-center justify-center text-xl sm:text-2xl mb-4">
                         <i class="fa-solid fa-comments-dollar"></i>
                     </div>
-                    <h3 class="font-display font-extrabold text-lg text-brand-navy mb-2">Presupuesto Transparente</h3>
-                    <p class="text-sm text-slate-600 leading-relaxed">
+                    <h3 class="font-display font-extrabold text-base sm:text-lg text-brand-navy mb-1.5">Presupuesto Transparente</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
                         Te asesoramos de forma honesta sobre la mejor solución para tu presupuesto, sin sorpresas ni costos ocultos.
                     </p>
                 </div>
@@ -810,89 +831,94 @@
     </section>
 
     <!-- ===================================================================== -->
-    <!-- SECCIÓN DE CONTACTO DIRECTO EN 1 CLIC (WHATSAPP, TELÉFONO, INSTAGRAM) -->
+    <!-- SECCIÓN DE CONTACTO DIRECTO EN 1 CLIC (TARJETAS TÁCTILES GRANDES)     -->
     <!-- ===================================================================== -->
-    <section id="contacto" class="py-20 bg-white">
+    <section id="contacto" class="py-14 sm:py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-14 reveal">
-                <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-navy text-white font-bold text-xs uppercase tracking-widest mb-3">
+            <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-14 reveal">
+                <span class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-brand-navy text-white font-bold text-xs uppercase tracking-widest mb-2.5">
                     <i class="fa-solid fa-bolt text-brand-orange"></i>
                     <span>Contacto Inmediato</span>
                 </span>
-                <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy mb-4">
-                    Comunicate con nosotros en un clic
+                <h2 class="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-brand-navy mb-3">
+                    Comunicate en un solo toque
                 </h2>
-                <p class="text-slate-600 text-base sm:text-lg">
-                    Elegí tu canal preferido. Escribinos por WhatsApp, llamanos directamente o mirá nuestros trabajos en Instagram.
+                <p class="text-slate-600 text-sm sm:text-lg">
+                    Elegí tu canal preferido: abrí nuestro chat de WhatsApp, llamanos directamente o mirá nuestras obras en Instagram.
                 </p>
             </div>
 
-            <!-- 3 Tarjetas Gigantes Clicables -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+            <!-- 3 Tarjetas Táctiles Grandes -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 reveal">
                 
                 <!-- TARJETA 1: WHATSAPP DIRECTO -->
                 <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20un%20presupuesto." 
                    target="_blank" rel="noopener noreferrer"
-                   class="group relative bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:shadow-green-500/30 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
-                    <div class="absolute -right-6 -bottom-6 text-white/15 text-9xl pointer-events-none group-hover:scale-110 transition-transform">
+                   class="group relative bg-gradient-to-br from-[#25D366] to-[#128C7E] text-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl active:scale-[0.98] transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-white/15 text-8xl pointer-events-none">
                         <i class="fa-brands fa-whatsapp"></i>
                     </div>
                     <div>
-                        <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-3xl mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-3xl mb-5">
                             <i class="fa-brands fa-whatsapp"></i>
                         </div>
-                        <span class="text-xs font-extrabold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">Respuesta Rápida</span>
-                        <h3 class="font-display text-2xl font-black mt-3 mb-2">¡Agregános a WhatsApp!</h3>
-                        <p class="text-white/90 text-sm mb-6">
-                            Hacé clic acá para abrir el chat directo y enviarnos fotos o medidas de tu proyecto.
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">Chat Directo</span>
+                        <h3 class="font-display text-xl sm:text-2xl font-black mt-3 mb-2">¡Agregános a WhatsApp!</h3>
+                        <p class="text-white/95 text-xs sm:text-sm mb-6">
+                            Tocá acá para abrir el chat directo y enviarnos fotos o medidas de tu proyecto.
                         </p>
                     </div>
-                    <div class="inline-flex items-center gap-2 font-extrabold text-base bg-white text-[#128C7E] py-3 px-5 rounded-xl w-fit shadow-md group-hover:gap-3 transition-all">
-                        <span>Iniciar Chat Ahora</span>
+                    <div class="inline-flex items-center justify-center sm:justify-start gap-2 font-extrabold text-sm sm:text-base bg-white text-[#128C7E] py-3.5 px-5 rounded-xl w-full sm:w-fit shadow-md">
+                        <span>Abrir Chat Ahora</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </div>
                 </a>
 
-                <!-- TARJETA 2: TELÉFONO DIRECTO -->
-                <a href="tel:+5491130124163" 
-                   class="group relative bg-gradient-to-br from-brand-navy to-brand-navyLight text-white rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:shadow-brand-navy/30 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
-                    <div class="absolute -right-6 -bottom-6 text-white/10 text-9xl pointer-events-none group-hover:scale-110 transition-transform">
+                <!-- TARJETA 2: TELÉFONO DIRECTO + COPIAR -->
+                <div class="group relative bg-gradient-to-br from-brand-navy to-brand-navyLight text-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-white/10 text-8xl pointer-events-none">
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div>
-                        <div class="w-16 h-16 rounded-2xl bg-brand-orange flex items-center justify-center text-3xl mb-6 shadow-lg">
+                        <div class="w-14 h-14 rounded-2xl bg-brand-orange flex items-center justify-center text-2xl sm:text-3xl mb-5 shadow-lg">
                             <i class="fa-solid fa-phone-volume"></i>
                         </div>
-                        <span class="text-xs font-extrabold uppercase tracking-wider bg-white/15 px-3 py-1 rounded-full">Llamada Directa</span>
-                        <h3 class="font-display text-2xl font-black mt-3 mb-2">11 3012-4163</h3>
-                        <p class="text-slate-300 text-sm mb-6">
-                            Llamanos directamente desde tu celular con un toque para coordinar una visita o consulta.
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider bg-white/15 px-3 py-1 rounded-full">Llamada Directa</span>
+                        <h3 class="font-display text-xl sm:text-2xl font-black mt-3 mb-2">11 3012-4163</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm mb-6">
+                            Llamanos directamente desde tu celular con un toque o copiá el número.
                         </p>
                     </div>
-                    <div class="inline-flex items-center gap-2 font-extrabold text-base bg-brand-orange text-white py-3 px-5 rounded-xl w-fit shadow-md group-hover:gap-3 transition-all">
-                        <span>Llamar Ahora</span>
-                        <i class="fa-solid fa-phone"></i>
+                    <div class="flex flex-wrap items-center gap-2.5 relative z-10">
+                        <a href="tel:+5491130124163" class="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 font-extrabold text-sm sm:text-base bg-brand-orange hover:bg-brand-orangeBright active:scale-95 text-white py-3.5 px-5 rounded-xl shadow-md transition-all">
+                            <i class="fa-solid fa-phone"></i>
+                            <span>Llamar</span>
+                        </a>
+                        <button type="button" onclick="copyPhoneNumber()" id="copy-phone-btn" class="inline-flex items-center justify-center gap-2 font-bold text-xs sm:text-sm bg-white/15 hover:bg-white/25 active:scale-95 text-white py-3.5 px-4 rounded-xl transition-all" aria-label="Copiar número de teléfono">
+                            <i class="fa-regular fa-copy"></i>
+                            <span id="copy-phone-text">Copiar</span>
+                        </button>
                     </div>
-                </a>
+                </div>
 
                 <!-- TARJETA 3: INSTAGRAM DIRECTO -->
-                <a href="https://www.instagram.com/pintureriacolor21/" 
+                <a href="https://instagram.com/pintureriacolor21" 
                    target="_blank" rel="noopener noreferrer"
-                   class="group relative bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white rounded-3xl p-8 shadow-xl hover:shadow-2xl hover:shadow-pink-500/30 transition-all duration-300 transform hover:-translate-y-2 flex flex-col justify-between overflow-hidden">
-                    <div class="absolute -right-6 -bottom-6 text-white/15 text-9xl pointer-events-none group-hover:scale-110 transition-transform">
+                   class="group relative bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] text-white rounded-3xl p-6 sm:p-8 shadow-lg hover:shadow-2xl active:scale-[0.98] transition-all duration-300 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-4 -bottom-4 text-white/15 text-8xl pointer-events-none">
                         <i class="fa-brands fa-instagram"></i>
                     </div>
                     <div>
-                        <div class="w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-3xl mb-6">
+                        <div class="w-14 h-14 rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-3xl mb-5">
                             <i class="fa-brands fa-instagram"></i>
                         </div>
-                        <span class="text-xs font-extrabold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">Nuestros Trabajos</span>
-                        <h3 class="font-display text-2xl font-black mt-3 mb-2">@pintureriacolor21</h3>
-                        <p class="text-white/90 text-sm mb-6">
-                            Mirá fotos reales de nuestras obras terminadas, novedades y escribinos por mensaje directo.
+                        <span class="text-[11px] font-extrabold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">Nuestros Trabajos</span>
+                        <h3 class="font-display text-xl sm:text-2xl font-black mt-3 mb-2">@pintureriacolor21</h3>
+                        <p class="text-white/95 text-xs sm:text-sm mb-6">
+                            Mirá fotos reales de nuestras obras terminadas y escribinos por mensaje directo.
                         </p>
                     </div>
-                    <div class="inline-flex items-center gap-2 font-extrabold text-base bg-white text-[#dc2743] py-3 px-5 rounded-xl w-fit shadow-md group-hover:gap-3 transition-all">
+                    <div class="inline-flex items-center justify-center sm:justify-start gap-2 font-extrabold text-sm sm:text-base bg-white text-[#dc2743] py-3.5 px-5 rounded-xl w-full sm:w-fit shadow-md">
                         <span>Ir a Instagram</span>
                         <i class="fa-solid fa-arrow-up-right-from-square"></i>
                     </div>
@@ -905,24 +931,24 @@
     <!-- ===================================================================== -->
     <!-- FOOTER PROFESIONAL                                                    -->
     <!-- ===================================================================== -->
-    <footer class="bg-brand-navy text-slate-300 pt-14 pb-8 border-t-4 border-brand-orange">
+    <footer class="bg-brand-navy text-slate-300 pt-12 pb-8 border-t-4 border-brand-orange">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-10 border-b border-slate-800">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-slate-800">
                 
                 <!-- Columna 1: Marca -->
-                <div class="space-y-4">
+                <div class="space-y-3">
                     <div class="inline-block bg-white px-4 py-2 rounded-2xl shadow-md">
                         <span class="font-display font-black text-2xl text-brand-navy">Techos<span class="text-brand-orange">21</span></span>
                     </div>
-                    <p class="text-sm text-slate-400 leading-relaxed">
+                    <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                         Construcción y reparación de techos de tejas y chapas, entrepisos, escaleras de madera e impermeabilización de losas. Calidad y confianza en cada obra.
                     </p>
                 </div>
 
                 <!-- Columna 2: Servicios -->
                 <div>
-                    <h4 class="font-display font-bold text-white uppercase tracking-wider text-sm mb-4">Servicios Principales</h4>
-                    <ul class="space-y-2 text-sm">
+                    <h4 class="font-display font-bold text-white uppercase tracking-wider text-xs sm:text-sm mb-3">Servicios Principales</h4>
+                    <ul class="space-y-2 text-xs sm:text-sm">
                         <li><a href="#servicios" class="hover:text-brand-orange transition-colors"><i class="fa-solid fa-angle-right text-brand-orange mr-1.5"></i>Construcción de techos de tejas</a></li>
                         <li><a href="#servicios" class="hover:text-brand-orange transition-colors"><i class="fa-solid fa-angle-right text-brand-orange mr-1.5"></i>Construcción de techos de chapa</a></li>
                         <li><a href="#servicios" class="hover:text-brand-orange transition-colors"><i class="fa-solid fa-angle-right text-brand-orange mr-1.5"></i>Construcción de entre pisos</a></li>
@@ -934,8 +960,8 @@
 
                 <!-- Columna 3: Contacto Directo -->
                 <div>
-                    <h4 class="font-display font-bold text-white uppercase tracking-wider text-sm mb-4">Contacto Directo</h4>
-                    <ul class="space-y-3 text-sm">
+                    <h4 class="font-display font-bold text-white uppercase tracking-wider text-xs sm:text-sm mb-3">Contacto Directo</h4>
+                    <ul class="space-y-3 text-xs sm:text-sm">
                         <li>
                             <a href="tel:+5491130124163" class="inline-flex items-center gap-3 hover:text-white transition-colors">
                                 <span class="w-9 h-9 rounded-lg bg-brand-orange/20 text-brand-orange flex items-center justify-center"><i class="fa-solid fa-phone"></i></span>
@@ -949,7 +975,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/pintureriacolor21/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 hover:text-white transition-colors">
+                            <a href="https://instagram.com/pintureriacolor21" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 hover:text-white transition-colors">
                                 <span class="w-9 h-9 rounded-lg bg-pink-500/20 text-pink-400 flex items-center justify-center"><i class="fa-brands fa-instagram text-lg"></i></span>
                                 <span>@pintureriacolor21</span>
                             </a>
@@ -959,7 +985,7 @@
 
             </div>
 
-            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-4">
+            <div class="pt-6 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-400 gap-3 text-center">
                 <p>&copy; <span id="current-year"></span> <strong>Techos 21</strong>. Todos los derechos reservados.</p>
                 <p>Buenos Aires, Argentina.</p>
             </div>
@@ -967,34 +993,66 @@
     </footer>
 
     <!-- ===================================================================== -->
-    <!-- BOTÓN FLOTANTE DE WHATSAPP SIEMPRE VISIBLE (1 CLIC AL CHAT)           -->
+    <!-- BARRA INFERIOR FIJA PARA CELULARES (MOBILE STICKY BOTTOM BAR - 1 TOQUE)-->
+    <!-- ===================================================================== -->
+    <nav aria-label="Acceso rápido móvil" class="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-slate-200 shadow-[0_-4px_20px_rgba(0,0,0,0.08)] px-2.5 pt-2 pb-safe">
+        <div class="grid grid-cols-3 gap-2 max-w-md mx-auto">
+            <!-- Botón 1: Llamar -->
+            <a href="tel:+5491130124163" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-brand-navy active:scale-95 text-white transition-transform">
+                <i class="fa-solid fa-phone text-brand-orange text-base mb-0.5"></i>
+                <span class="text-[11px] font-bold tracking-tight">Llamar</span>
+            </a>
+            <!-- Botón 2: WhatsApp (Protagonista) -->
+            <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20un%20presupuesto." target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-[#25D366] active:scale-95 text-white shadow-md shadow-green-500/25 transition-transform">
+                <i class="fa-brands fa-whatsapp text-lg mb-0.5"></i>
+                <span class="text-[11px] font-extrabold tracking-tight">WhatsApp</span>
+            </a>
+            <!-- Botón 3: Instagram -->
+            <a href="https://instagram.com/pintureriacolor21" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-2 px-1 rounded-xl bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] active:scale-95 text-white transition-transform">
+                <i class="fa-brands fa-instagram text-base mb-0.5"></i>
+                <span class="text-[11px] font-bold tracking-tight">Instagram</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- ===================================================================== -->
+    <!-- BOTÓN FLOTANTE WHATSAPP PARA ESCRITORIO (MD EN ADELANTE)               -->
     <!-- ===================================================================== -->
     <a href="https://wa.me/5491130124163?text=Hola%20Techos%2021!%20Quisiera%20consultar%20por%20un%20presupuesto." 
        target="_blank" 
        rel="noopener noreferrer"
        aria-label="Chatear por WhatsApp con Techos 21"
-       class="wa-pulse-ring fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-4 py-3.5 sm:px-5 sm:py-4 rounded-full shadow-2xl transition-transform hover:scale-105 group">
+       class="hidden md:flex wa-pulse-ring fixed bottom-6 right-6 z-50 items-center gap-3 bg-[#25D366] hover:bg-[#1ebe5d] text-white px-5 py-4 rounded-full shadow-2xl transition-transform hover:scale-105 group">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
-        <span class="hidden sm:inline-block font-extrabold text-sm pr-1">¡Chateá con nosotros!</span>
+        <span class="font-extrabold text-sm pr-1">¡Chateá con nosotros!</span>
     </a>
 
     <!-- ===================================================================== -->
-    <!-- JAVASCRIPT INTEGRADO (ANIMACIONES, FILTROS, COTIZADOR WHATSAPP)       -->
+    <!-- NOTIFICACIÓN TOAST PARA COPIADO DE TELÉFONO                           -->
+    <!-- ===================================================================== -->
+    <div id="toast-notification" class="fixed top-20 left-1/2 -translate-x-1/2 z-50 bg-brand-navy text-white px-5 py-3 rounded-2xl shadow-2xl border border-brand-orange flex items-center gap-2.5 text-sm font-bold opacity-0 pointer-events-none transition-all duration-300">
+        <i class="fa-solid fa-circle-check text-brand-orange text-lg"></i>
+        <span>Número copiado: 11 3012-4163</span>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT VANILLA (INTERACTIVIDAD, FILTROS, COTIZADOR Y CLIPBOARD)   -->
     <!-- ===================================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Actualizar año actual en el footer
+            // 1. Año dinámico en el footer
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
-            // 2. Menú móvil desplegable
+            // 2. Menú móvil desplegable táctil
             const mobileMenuBtn = document.getElementById('mobile-menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
 
             mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                mobileMenuBtn.setAttribute('aria-expanded', !isHidden);
                 const icon = mobileMenuBtn.querySelector('i');
-                if (mobileMenu.classList.contains('hidden')) {
+                if (isHidden) {
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
                 } else {
@@ -1003,10 +1061,11 @@
                 }
             });
 
-            // Cerrar menú móvil al hacer clic en un enlace
+            // Cerrar menú móvil al tocar una opción
             mobileLinks.forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
                     const icon = mobileMenuBtn.querySelector('i');
                     icon.classList.remove('fa-xmark');
                     icon.classList.add('fa-bars');
@@ -1021,11 +1080,11 @@
                         entry.target.classList.add('active');
                     }
                 });
-            }, { threshold: 0.12 });
+            }, { threshold: 0.1 });
 
             revealElements.forEach(el => revealObserver.observe(el));
 
-            // 4. Contadores animados en la sección de estadísticas
+            // 4. Contadores animados
             const counters = document.querySelectorAll('.counter');
             let countersStarted = false;
 
@@ -1035,7 +1094,7 @@
                         countersStarted = true;
                         counters.forEach(counter => {
                             const target = +counter.getAttribute('data-target');
-                            const duration = 1800; // ms
+                            const duration = 1600;
                             const increment = target / (duration / 16);
                             let current = 0;
 
@@ -1052,7 +1111,7 @@
                         });
                     }
                 });
-            }, { threshold: 0.4 });
+            }, { threshold: 0.3 });
 
             if (counters.length > 0) {
                 counterObserver.observe(counters[0].parentElement.parentElement);
@@ -1071,7 +1130,7 @@
                 let message = `Hola Techos 21! Quisiera solicitar un presupuesto para:\n• *Servicio:* ${service}`;
                 
                 if (zone) message += `\n• *Zona:* ${zone}`;
-                if (size) message += `\n• *Superficie/Cantidad:* ${size}`;
+                if (size) message += `\n• *Medidas/Cantidad:* ${size}`;
                 if (details) message += `\n• *Detalle:* ${details}`;
 
                 const encodedMessage = encodeURIComponent(message);
@@ -1083,7 +1142,6 @@
 
         // 6. Filtro interactivo de servicios
         function filterServices(category, btnElement) {
-            // Actualizar estilos de botones
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('bg-brand-navy', 'text-white', 'shadow-md');
                 btn.classList.add('bg-white', 'text-brand-navy', 'border', 'border-slate-200');
@@ -1091,7 +1149,6 @@
             btnElement.classList.remove('bg-white', 'text-brand-navy', 'border', 'border-slate-200');
             btnElement.classList.add('bg-brand-navy', 'text-white', 'shadow-md');
 
-            // Filtrar tarjetas
             const cards = document.querySelectorAll('.service-card');
             cards.forEach(card => {
                 if (category === 'all' || card.getAttribute('data-category') === category) {
@@ -1105,9 +1162,39 @@
                     card.style.transform = 'translateY(15px)';
                     setTimeout(() => {
                         card.style.display = 'none';
-                    }, 250);
+                    }, 220);
                 }
             });
+        }
+
+        // 7. Función para copiar número de teléfono con un toque (compatible con móviles e iFrames)
+        function copyPhoneNumber() {
+            const phoneText = "11 3012-4163";
+            const tempInput = document.createElement("input");
+            tempInput.value = phoneText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            tempInput.setSelectionRange(0, 99999);
+            
+            try {
+                document.execCommand("copy");
+                const btnText = document.getElementById("copy-phone-text");
+                const toast = document.getElementById("toast-notification");
+                
+                btnText.textContent = "¡Copiado!";
+                toast.classList.remove("opacity-0", "pointer-events-none");
+                toast.classList.add("opacity-100");
+                
+                setTimeout(() => {
+                    btnText.textContent = "Copiar";
+                    toast.classList.remove("opacity-100");
+                    toast.classList.add("opacity-0", "pointer-events-none");
+                }, 2500);
+            } catch (err) {
+                console.error("No se pudo copiar el teléfono", err);
+            }
+            
+            document.body.removeChild(tempInput);
         }
     </script>
 </body>
