@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ColorVivo | Pinturería</title>
+  <meta name="description" content="Pinturas, esmaltes, barnices y accesorios para dar vida a tus espacios.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ENCABEZADO -->
+  <header class="header" id="inicio">
+    <div class="container header__inner">
+      <a href="#inicio" class="logo" aria-label="ColorVivo - inicio">
+        <span class="logo__drop" aria-hidden="true"></span>
+        <span>Color<strong>Vivo</strong></span>
+      </a>
+      <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav">
+        <a href="#catalogo">Productos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+        <button class="btn btn--ghost btn--sm" id="btnAdmin">🔒 Administrar</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- BARRA DE ADMINISTRADOR -->
+  <div class="adminbar" id="adminbar" hidden>
+    <div class="container adminbar__inner">
+      <strong>Modo administrador</strong>
+      <div class="adminbar__actions">
+        <button class="btn btn--primary btn--sm" id="btnNuevo">＋ Nuevo producto</button>
+        <button class="btn btn--light btn--sm" id="btnExportar">⬇ Exportar</button>
+        <label class="btn btn--light btn--sm" for="inputImportar">⬆ Importar</label>
+        <input type="file" id="inputImportar" accept="application/json" hidden>
+        <button class="btn btn--light btn--sm" id="btnReset">↺ Restablecer</button>
+        <button class="btn btn--danger btn--sm" id="btnSalir">Salir</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__blob hero__blob--1"></div>
+      <div class="hero__blob hero__blob--2"></div>
+      <div class="hero__blob hero__blob--3"></div>
+      <div class="container hero__inner">
+        <span class="pill">🎨 Más de 20 años dando color</span>
+        <h1>Pintá tus ideas con <span class="grad">colores que enamoran</span></h1>
+        <p>Pinturas, esmaltes, barnices y accesorios de primera calidad. Asesoramiento profesional y entrega rápida.</p>
+        <div class="hero__cta">
+          <a href="#catalogo" class="btn btn--primary btn--lg">Ver productos</a>
+          <a href="#contacto" class="btn btn--outline btn--lg">Pedir asesoramiento</a>
+        </div>
+        <ul class="hero__stats">
+          <li><strong>+500</strong><span>Colores</span></li>
+          <li><strong>24 h</strong><span>Entrega local</span></li>
+          <li><strong>100%</strong><span>Garantía</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section class="section" id="catalogo">
+      <div class="container">
+        <div class="section__head">
+          <h2>Nuestros productos</h2>
+          <p>Explorá por categoría, buscá por nombre o filtrá por precio.</p>
+        </div>
+
+        <div class="toolbar">
+          <div class="search">
+            <span aria-hidden="true">🔍</span>
+            <input type="search" id="buscar" placeholder="Buscar producto…" aria-label="Buscar producto">
+          </div>
+          <select id="orden" aria-label="Ordenar productos">
+            <option value="destacados">Destacados primero</option>
+            <option value="nombre">Nombre (A-Z)</option>
+            <option value="menor">Precio: menor a mayor</option>
+            <option value="mayor">Precio: mayor a menor</option>
+          </select>
+        </div>
+
+        <div class="chips" id="chips" role="tablist" aria-label="Categorías"></div>
+
+        <p class="count" id="contador" aria-live="polite"></p>
+        <div class="grid" id="grid"></div>
+
+        <div class="empty" id="vacio" hidden>
+          <div class="empty__icon">🪣</div>
+          <h3>No encontramos productos</h3>
+          <p>Probá con otra búsqueda o categoría.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOSOTROS -->
+    <section class="section section--alt" id="nosotros">
+      <div class="container features">
+        <article class="feature">
+          <div class="feature__icon">🏷️</div>
+          <h3>Mejores marcas</h3>
+          <p>Trabajamos con fabricantes líderes para garantizar durabilidad y terminación.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon">🎯</div>
+          <h3>Colorimetría exacta</h3>
+          <p>Preparamos el tono que imaginás con máquina de color computarizada.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon">🚚</div>
+          <h3>Envíos rápidos</h3>
+          <p>Llevamos tu pedido a obra o a domicilio sin demoras.</p>
+        </article>
+        <article class="feature">
+          <div class="feature__icon">🧑‍🎨</div>
+          <h3>Asesoramiento</h3>
+          <p>Te ayudamos a elegir el producto ideal y calcular rendimiento.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section class="section" id="contacto">
+      <div class="container contact">
+        <div>
+          <h2>¿Hablamos?</h2>
+          <p>Escribinos y te respondemos al instante. Pasá también por el local y probá los colores en persona.</p>
+          <ul class="contact__list">
+            <li>📍 Av. Principal 1234, Tu Ciudad</li>
+            <li>📞 +54 11 0000-0000</li>
+            <li>🕘 Lun a Vie 8:00–18:00 · Sáb 8:00–13:00</li>
+          </ul>
+        </div>
+        <a class="btn btn--whatsapp btn--lg" id="btnWhats" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> ColorVivo Pinturería. Todos los derechos reservados.</div>
+  </footer>
+
+  <!-- MODAL: PIN -->
+  <dialog id="dlgPin" class="modal modal--sm">
+    <form method="dialog" id="formPin" class="modal__body">
+      <h3>Acceso de administrador</h3>
+      <p class="muted">Ingresá tu PIN para editar los productos.</p>
+      <input type="password" id="pin" inputmode="numeric" placeholder="PIN" autocomplete="off" required>
+      <p class="error" id="pinError" hidden>PIN incorrecto</p>
+      <div class="modal__actions">
+        <button type="button" class="btn btn--light" data-close>Cancelar</button>
+        <button type="submit" class="btn btn--primary">Entrar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- MODAL: PRODUCTO -->
+  <dialog id="dlgProducto" class="modal">
+    <form id="formProducto" class="modal__body">
+      <h3 id="tituloForm">Nuevo producto</h3>
+      <input type="hidden" id="pId">
+
+      <div class="form-grid">
+        <label class="field field--full">
+          <span>Nombre *</span>
+          <input type="text" id="pNombre" maxlength="80" required>
+        </label>
+
+        <label class="field">
+          <span>Categoría *</span>
+          <input type="text" id="pCategoria" list="listaCategorias" maxlength="30" required>
+          <datalist id="listaCategorias"></datalist>
+        </label>
+
+        <label class="field">
+          <span>Precio (ARS) *</span>
+          <input type="number" id="pPrecio" min="0" step="1" required>
+        </label>
+
+        <label class="field field--full">
+          <span>Descripción</span>
+          <textarea id="pDescripcion" rows="3" maxlength="300"></textarea>
+        </label>
+
+        <label class="field">
+          <span>Presentación</span>
+          <input type="text" id="pPresentacion" maxlength="30" placeholder="Ej: 20 L">
+        </label>
+
+        <label class="field">
+          <span>Color de referencia</span>
+          <input type="color" id="pColor" value="#ff3d81">
+        </label>
+
+        <div class="field field--full">
+          <span>Imagen</span>
+          <div class="imgpick">
+            <img id="pPreview" alt="Vista previa" hidden>
+            <div class="imgpick__ctrl">
+              <label class="btn btn--light btn--sm" for="pImagen">Subir imagen</label>
+              <input type="file" id="pImagen" accept="image/*" hidden>
+              <button type="button" class="btn btn--light btn--sm" id="btnQuitarImg">Quitar</button>
+            </div>
+          </div>
+        </div>
+
+        <label class="check"><input type="checkbox" id="pDestacado"> ⭐ Producto destacado</label>
+        <label class="check"><input type="checkbox" id="pStock" checked> ✅ Disponible en stock</label>
+      </div>
+
+      <div class="modal__actions">
+        <button type="button" class="btn btn--light" data-close>Cancelar</button>
+        <button type="submit" class="btn btn--primary">Guardar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
